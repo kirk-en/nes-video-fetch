@@ -29,10 +29,13 @@ const updateGoogleSheet = async (data) => {
     const sheets = await authenticateGoogleSheets();
 
     // Prepare the data to be written
-    const values = data.map((row) => [row.gameTitle, row.longplayId]);
+    const values = data.map((row) => [
+      row.gameTitle,
+      `https://longplays.org/infusions/longplays/longplays.php?file_id=${row.longplayId}`,
+    ]);
 
     // Append data to the sheet
-    await sheets.spreadsheets.values.append({
+    await sheets.spreadsheets.values.update({
       spreadsheetId: sheetId,
       range: range,
       valueInputOption: "RAW", // or "USER_ENTERED" if you want to interpret formulas
@@ -47,11 +50,13 @@ const updateGoogleSheet = async (data) => {
   }
 };
 
-// Example data to write to the sheet
-const exampleData = [
-  { gameTitle: "Super Mario Bros", longplayId: "15203" },
-  { gameTitle: "The Legend of Zelda", longplayId: "15204" },
-];
+const fetchDataAndUpdateSheet = async (url) => {
+  const gameLinks = await fetchLinks(url);
+  if (gameLinks && gameLinks.length > 0) {
+    updateGoogleSheet(gameLinks);
+  } else console.log("No data was fetched");
+};
 
-// Update the sheet with the example data
-updateGoogleSheet(exampleData);
+fetchDataAndUpdateSheet(
+  "https://longplays.org/infusions/longplays/longplays.php?cat_id=15"
+);

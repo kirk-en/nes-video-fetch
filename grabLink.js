@@ -35,13 +35,11 @@ export const fetchLinks = async (targetURL) => {
     );
 
     console.log("Total Rows:", data.length);
-    console.log("Sample Row:", data[1202]); // Verify a sample row
-
     // Close the browser
     await browser.close();
+
+    return data;
   } catch (error) {
     console.log("Error fetching site:", error);
   }
 };
-
-fetchLinks("https://longplays.org/infusions/longplays/longplays.php?cat_id=15");
