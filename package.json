@@ -3,6 +3,7 @@
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
+    "googleapis": "^144.0.0",
     "puppeteer": "^23.10.4"
   },
   "name": "nes-video-fetch",

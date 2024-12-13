@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import "dotenv/config";
 
-const fetchLinks = async (targetURL) => {
+export const fetchLinks = async (targetURL) => {
   try {
     // Launching Pupperteer
     const browser = await puppeteer.launch();
