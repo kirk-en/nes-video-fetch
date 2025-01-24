@@ -15,7 +15,7 @@ A web scraping tool designed to fetch download links for NES (Nintendo Entertain
 ### Features:
 
 - Scrapes game titles and corresponding longplay video download links.
-- Currently supports NES games, pulling longplays for 443 games out of the total licensed NES library of 677 games.
+- Currently supports NES games, pulling longplay download links and wiki info for 443 games out of the total licensed NES library of 677 games.
 - Supports dynamic page scraping via Puppeteer for interactive websites.
 - Automatically stores scraped data in Google Sheets for easy reference and analysis.
 - Data is cleaned and formatted before being added to the sheet (handling of special characters and whitespace).
